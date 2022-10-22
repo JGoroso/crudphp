@@ -1,4 +1,15 @@
 <?php include("php/cabecera.php") ?>
+<?php include("conexionbd.php") ?>
+<?php
+$txtId  = (isset($_POST['txtId'])) ? $_POST['txtId'] : "";
+$delete = (isset($_POST['delete'])) ? $_POST['delete'] : "";
+
+$selectAllSQL = $conexion->prepare('SELECT * FROM products');
+$selectAllSQL->execute();
+//Fetchall -> Recupera todos los registros para guardarlo en listaproductos.
+$listaProductos = $selectAllSQL->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 
 
 <section class="hero-container">
@@ -26,8 +37,8 @@
 <section class="products-container">
   <h2>¿Sabias que... </h2>
   <h5>Siendo parte de mascosalud podras acceder a los mejores beneficios en los siguientes productos...</h5>
-  <h5>Selecciona tu mascota ⬇</h5>
-  <div class="pets">
+
+  <!-- <div class="pets">
     <div id="perro">
       <button><img src="./assets/imgs/perro.png" alt="perro" srcset=""></button>
       <h6>Perros</h6>
@@ -39,29 +50,23 @@
     <div id="other">
       <but ton><img src="./assets/imgs/otheres.png" alt="otros" srcset=""></button>
         <h6>Otros</h6>
-    </div>
+    </div> -->
   </div>
 
   <div class="products-grid">
+    <?php foreach ($listaProductos as $product) { ?>
+      <div class="first-column" id="products">
+        <div class="div1" id="first">
+          <img src='<?php echo $product['imagen']; ?> alt=' suple' />
+          <h5><?php echo $product['nombre']; ?></h5>
+          <div class="div2">
+            <h6 class="categoria"><?php echo $product['categoria']; ?></h6>
+            <h6 class="precio">$<?php echo $product['precio']; ?></h6>
+          </div>
+        </div>
 
-    <div class="first-column" id="products">
-      <div class="div1" id="first">
-        <img src='https://m.media-amazon.com/images/I/81efFOXgj0L._AC_SX466_.jpg' alt='suple' />
-        <h5>Suplement HIP & Joint</h5>
       </div>
-
-    </div>
-    <div class="second-column" id="products">
-      <div class="div2" id="second"><img src="https://toquipetshop.com.ar/wp-content/uploads/2019/02/derma-defence.png" alt='cuchita' />
-        <h5>Alimento old Prince</h5>
-      </div>
-    </div>
-    <div class="third-column" id="products">
-      <div class=" div3" id="third"><img src='https://www.gatostienda.es/pics/2022/02/24/pewingo-fuente-para-perros-2l-silenciosa-bebedero-gatos-automatica-con-agua-nivel-led-indicadora-filtro-de-carbon-activadoy-4-juguetes-fuente-para-75994.jpg' alt='tarros' />
-        <h5>Bebedero gato</h5>
-      </div>
-
-    </div>
+    <?php } ?>
   </div>
   </div>
 

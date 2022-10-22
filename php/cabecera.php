@@ -27,20 +27,23 @@
             MascoSalud
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="nosotros.html">Nosotros</a></li>
+            <li><a class="dropdown-item" href="nosotros.php">Nosotros</a></li>
 
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="ubicacion.html">Ubicación</a></li>
+            <li><a class="dropdown-item" href="ubicacion.php">Ubicación</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contacto.html">Contacto</a>
+          <a class="nav-link" href="contacto.php">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="calculadora.html">Calculadora</a>
+          <a class="nav-link" href="calculadora.php">Calculadora</a>
         </li>
+        <a href="admin"><button type="button" class="btn btn-info">Admin</button></a>
       </ul>
+
+
     </div>
   </header>
